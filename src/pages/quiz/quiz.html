@@ -1,0 +1,76 @@
+<!--
+  Generated template for the QuizPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Quiz from ({{subject}})
+      
+      </ion-title>
+    </ion-navbar>
+ <ion-list>
+      <ion-row style="padding: 3px">
+    <ion-col col-3 (click)="openAllSubjectsScore()"  text-left  style="background-color: lightgreen; font-size:small; width:90%; text-align: center"   > 
+      Scorecard 
+      <ion-icon item-right name="ios-trending-up-outline"></ion-icon>
+</ion-col>
+<ion-col col-7>
+    Correct:{{scores?.score?.percent_score}}%  , [ {{scores?.score?.total_correct}} / {{scores?.score?.total_qsn}} ]
+</ion-col>
+    <ion-col col-2 text-right (click)=" getquizquestion($event)"> Next
+      <ion-icon item-right name="ios-arrow-dropright"  tappable > </ion-icon>
+   </ion-col>
+   </ion-row>
+   </ion-list>
+  </ion-header>
+
+
+<ion-content padding>
+  <ion-card class="card-md" *ngIf="nextquestion">
+   <ion-item text-wrap aria-expanded="true" class="quizquestion" ><span style="color:blue;">Question.{{nextquestion.question.q_id}}:</span> {{nextquestion.question.question_text}}</ion-item>
+ 
+   <div>
+     <ion-list  text-wrap text-left  radio-group  ng-disabled="true" > 
+        <ion-item  *ngFor="let option of nextquestion.options ;"  [ngStyle]="{'background-color':option_colour[option.option_no]}">
+            <ion-radio item-left (click)="checkquestion(nextquestion.question.q_id,option.option_no,nextquestion.answer)" ></ion-radio>
+            <ion-label text-wrap text-left>{{option?.option_text}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <ion-list *ngIf=" error_tick == 'Correct' " style="text-align: center;height: 50px;">
+        
+  <span  style="background-color:lightgreen; padding: 10px ">
+      <ion-icon item-right name="md-checkmark"></ion-icon>  {{ error_tick}}
+    </span>  <ion-icon style=" padding: 10px" item-right name="ios-trophy-outline"></ion-icon>
+ 
+</ion-list>
+
+ <ion-list  *ngIf=" error_tick == 'Wrong' " style="text-align: center;height: 50px;">
+   
+      <span  style="background-color:lightcoral; padding: 10px"> 
+          <ion-icon  item-right name="md-close"></ion-icon>  {{ error_tick}} 
+        </span> <ion-icon style=" padding: 10px"  item-right name="ios-sad-outline"></ion-icon>
+    
+    </ion-list>
+     
+  </ion-card>
+
+
+<ion-footer  margin >
+  <button   round small  style="background-color: lightgreen; font-size:large; width:90%; text-align: center"   > 
+    Scorecard 
+    <ion-icon item-right name="ios-trending-up-outline"></ion-icon>
+</button>
+
+</ion-footer>
+
+
+
+</ion-content>

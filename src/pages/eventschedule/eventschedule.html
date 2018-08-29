@@ -1,0 +1,65 @@
+
+               <ion-header>
+                <ion-navbar>
+                  <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                  </button>
+                  <ion-title>Events Schedule
+                  </ion-title>
+                </ion-navbar>
+              </ion-header>
+              
+              
+              <ion-content style="padding-right: 0px;  padding-left: 0px;">
+              
+                  <ion-card     *ngFor="let post of events ; let i=index"   style=" margin-right: 0px; margin-left: 0px; width: 100%;">
+                      <ion-item  >
+                   
+                             
+                                 
+                                 <ion-avatar  item-start >
+                                 <img *ngIf="post?.image_path" src="{{post?.image_path}}" >
+                                 <!-- <img *ngIf="post?.doc_path==''" src="../../assets/imgs/no-image-landscape.png" >  -->
+                               </ion-avatar>
+                             
+                               <h4>{{post.event_eame}}</h4>
+                             
+                             
+                               <ion-icon  name="clock" item-end ></ion-icon>
+                               <ion-note  item-end ion-right>{{post.start_date}} </ion-note>
+                               
+                             
+                            
+                           </ion-item>
+                           
+                           
+                           <img class="element" src= "{{post?.image_path}}"  >
+                       
+                       
+                       <ion-card-content style="padding-left: 5px;padding-right: 0px; padding-bottom: 5px; padding-top: 5px;" >
+                       <h1 class="card-title">{{post.location}}</h1>
+                       <p class="card-subtitle">{{post?.description}}</p>
+                   
+                       </ion-card-content >
+                   
+                       
+                         <ion-row   radio-group checked="posts[i].event_id"   [(ngModel)]="post.event_id"  >
+                           <ion-col>
+                              <ion-label> <ion-radio    value="will_join"></ion-radio> will join </ion-label>
+                             
+                           </ion-col>
+                           <ion-col>
+                              <ion-label> <ion-radio  value="may_be"></ion-radio> may be </ion-label>
+                             
+                           </ion-col>
+                           <ion-col>
+                              <ion-label><ion-radio   value="not_interested"></ion-radio>  not interested </ion-label>
+                              
+                           </ion-col>
+                         </ion-row>
+                     
+                   
+                   </ion-card>
+              
+              </ion-content>
+              

@@ -1,0 +1,56 @@
+page-homeworks {
+
+    ion-spinner * {
+        width: 28px;
+        height: 28px;
+        stroke: #444;
+        fill: #222;
+       text-align: center;
+      }
+
+      .points {
+          font-size: x-small;
+
+      }
+      
+      .description{
+          font-size: small;
+      }
+      
+      .subject{
+          background-color: aliceblue;
+          font-size: inherit;
+          
+      }
+
+      .period{
+          font-size: x-small;
+          align-items:center;
+      }
+
+      .date{
+          background-color:lightgray;
+          color: black;
+          margin-bottom: 5px;
+          margin-top: 13px; 
+      }
+
+      .subject-row{
+          margin-bottom: 5px;
+      }
+
+      ion-item {
+        width: 92%;
+        margin: 4%;
+        padding-left: 10px !important;
+        margin-bottom: 10px;
+        background-color: #fff;
+        opacity: 0.7;
+        font-size: 0.9em;
+        transition: 0.2s linear;
+    }
+
+      
+     
+}
+

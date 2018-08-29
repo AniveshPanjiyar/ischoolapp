@@ -1,0 +1,29 @@
+<ion-menu id='myMenu' [content]="content" >
+    <ion-header>
+        <ion-toolbar style="align-self:center;" >
+            <ion-title>Menu</ion-title>
+           </ion-toolbar>
+           <ion-row>
+           <ion-col col-4><ion-avatar     style="    width: 100px; align-self: center;" menuClose  (click)="openprofile()">
+            <img src="{{studentdetail?.image_path}}">            
+           
+           </ion-avatar> 
+           </ion-col>
+           <ion-col col-8 style="vertical-align: bottom" menuClose (click)="openprofile()">My Profile</ion-col>
+        </ion-row>
+         </ion-header>
+
+  <ion-content>
+    <ion-list>
+     
+      <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
+          <ion-icon  [name]="page.icons"> {{page.title}}</ion-icon> 
+      </button>
+      <button ion-button (click)="logout()" menuClose> LOGOUT   </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

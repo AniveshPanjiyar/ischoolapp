@@ -1,0 +1,58 @@
+<!--
+  Generated template for the SubjectscorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Subject Wise Quiz Score</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="false">
+<ion-item>
+  <ion-row style="font-size: small;background-color: dodgerblue">
+    <ion-col col-3>Subject</ion-col>
+    <ion-col col-3>Attempted</ion-col>
+    <ion-col style="text-align: center" col-3 > Perc %</ion-col>
+    <ion-col col-2>Rank</ion-col>
+    <ion-col col-1 title="Topic wise Score">T+</ion-col> 
+  </ion-row>
+</ion-item>
+ 
+<div>
+    <ion-list   text-wrap text-left   > 
+       <ion-item id="1" *ngFor="let subj of Student_Subjects ;" >
+        <ion-row style="font-size: small;">
+          <ion-col col-4> <ion-icon item-left name="book"></ion-icon>{{ subj.subject }}</ion-col>
+          <ion-col col-3>{{subject_scores[subj.subject]?.score?.total_correct}}/{{subject_scores[subj.subject]?.score?.total_qsn}}</ion-col>
+          <ion-col col-3><ion-badge item-right>
+            {{subject_scores[subj.subject]?.score?.percent_score}}%</ion-badge></ion-col>
+          <ion-col col-1>{{subject_scores[subj.subject]?.score?.rank}}</ion-col>
+          <ion-col col-1  (click)="openSubjectTopicsScore(subj.subject)" >+</ion-col> 
+           </ion-row>
+           </ion-item>
+      </ion-list>
+      <ion-list>
+
+        <ion-item id="2">
+          <ion-row>
+           <ion-col col-4> AVG.</ion-col>
+           <ion-col col-3></ion-col>
+           <ion-col col-3><ion-badge item-right>
+             </ion-badge></ion-col>
+           <ion-col col-1></ion-col>
+           <ion-col col-1></ion-col>
+     
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div>
+      
+   </div>
+</ion-content>

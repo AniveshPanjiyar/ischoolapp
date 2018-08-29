@@ -1,0 +1,220 @@
+<!--
+  Generated template for the HealthstatusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Health Status
+
+    </ion-title>
+  </ion-navbar>
+
+
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card >
+    <ion-item style="padding-right: 0px;  padding-left: 0px; font-size: 1.2rem">
+    <ion-row>
+      <ion-col col-4> <ion-avatar> <img src="{{studentdetails?.image_path}}"></ion-avatar>  </ion-col>
+      <ion-col col-8 wrap > {{studentdetails?.name}} ({{studentdetails?.student_id}})</ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-col col-4 >Class:{{studentdetails?.class}}</ion-col>
+     <ion-col text left >Session:{{studentdetails?.session}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-4 ></ion-col>
+        <ion-col >Blood Group:{{studentdetails?.blood_group}} </ion-col>
+        </ion-row>
+     
+ </ion-item>
+  </ion-card>
+  <div  style="padding-bottom: 0px;  padding-left: 10px;">
+    Last Checkup Details:
+    <ol>
+      <li>5 june 2017</li>
+      <li>8 july 2017</li>
+      <li>10 august 2017</li>
+    </ol>
+  </div>
+  <ion-card style="padding-right: 0px;  padding-left: 0px;" >
+    <ion-card-content style="padding-right: 0px;  padding-left: 0px;" class="cardcontent">
+    <ion-grid>
+        <ion-row >
+          <ion-col> Health Summary:      </ion-col>
+          <ion-col> Details:      </ion-col>
+          <ion-col> Remarks:  </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col> Last Checkup Detail: </ion-col>
+          <ion-col> 02/12/2015  </ion-col>
+          <ion-col> N/A          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>   Height:      </ion-col>
+          <ion-col> {{classmates?.height}}  </ion-col>
+          <ion-col> N/A  </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>  Weight:   </ion-col>
+          <ion-col> {{classmates?.weight}}  </ion-col>
+          <ion-col> N/A </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            Blood Pressure:
+          </ion-col>
+          <ion-col>
+            {{classmates?.blood_pressure}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            Pulse:
+          </ion-col>
+          <ion-col>
+            22
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Nails:
+          </ion-col>
+          <ion-col>
+            Normal
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Ent:
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            Dental and oral hygiene:
+          </ion-col>
+          <ion-col>
+            Pass
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            complexion:
+          </ion-col>
+          <ion-col>
+            {{classmates?.complexion}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            eyesight left/right:
+          </ion-col>
+          <ion-col>
+           {{classmates?.eye_sight_left}}/{{classmates?.eye_sight_right}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            identification mark:
+          </ion-col>
+          <ion-col>
+           {{classmates?.identification_mark}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        
+        
+        <ion-row>
+          <ion-col>
+            Alergy(if any)
+          </ion-col>
+          <ion-col>
+            {{classmates?.allergy}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Alergy(medicine):
+          </ion-col>
+          <ion-col>
+            {{classmates?.any_physical_disorder}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            Any physical disorder
+          </ion-col>
+          <ion-col>
+            {{classmates?.any_physical_disorder}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Any accident
+          </ion-col>
+          <ion-col>
+            {{classmates?.any_accident}}
+          </ion-col>
+          <ion-col>
+            N/A
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+
+  </ion-card>
+</ion-content>

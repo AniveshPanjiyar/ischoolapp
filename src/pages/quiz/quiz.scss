@@ -1,0 +1,36 @@
+page-quiz {
+
+    
+        .card-md {
+            margin: 0%;
+            border-radius: 2px;
+            width: calc(100%);
+            height: 89%;
+            font-size: 1.4rem;
+           
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+
+        .optionbutton{
+            border-radius: 2px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+             font-size: small;
+             
+             width: 99%;
+             text-align: left !important;
+             padding :5px;
+             color:#2F4F4F;
+
+        }
+
+        .quizquestion{
+                margin: 0 0 2px;
+                font-size: large;
+                
+                padding: 15px;
+                color:#2F4F4F;
+                text-align: justify;
+        }
+}

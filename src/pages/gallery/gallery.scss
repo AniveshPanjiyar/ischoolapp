@@ -1,0 +1,17 @@
+page-gallery {
+    .thumb{
+        position: absolute;
+        bottom:5%;
+        left:5%
+    }
+
+    .imagecard{
+    
+    object-fit: cover;
+    }
+
+
+    $img-placeholder-background:#eee;
+    
+
+}

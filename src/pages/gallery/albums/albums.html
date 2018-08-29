@@ -1,0 +1,23 @@
+<!--
+  Generated template for the AlbumsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Albums</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page" padding>
+    <ion-card  *ngFor="let albums of albumlist" (click)="openalbumimages(albums.album_id,albums.albums_name)" >
+        <img src="{{albums.album_image}}"/>
+        <h1 class="card-title">{{albums.album_name}}</h1>
+        <div class="card-subtitle">{{albums.image_count}} Images</div>
+      </ion-card>
+
+</ion-content>

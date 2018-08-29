@@ -1,0 +1,145 @@
+<!--
+  Generated template for the PollsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar >
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Polls</ion-title>
+     
+     
+    </ion-navbar>
+    <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="Not Submitted">
+          Not Submitted
+        </ion-segment-button>
+        
+        <ion-segment-button value="Submitted">
+          Submitted
+        </ion-segment-button>
+      </ion-segment>
+    
+  </ion-header>
+
+
+<ion-content padding>
+
+    <div [ngSwitch]="category" swipeSegment [tabsList]="categories" [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
+     
+      <div *ngSwitchCase="'Not Submitted'" >
+        <ion-list class="accordion-list" >     
+      <ion-item  *ngFor="let questions of not_submitted; let i = index" no-lines no-padding>
+                  <button  ion-item  (click)="toggleSectionnotsubmitted(i)" text-wrap detail-none [ngClass]="{'section-active': questions.open, 'section': !questions.open}">
+                  <ion-icon item-left  name="ios-archive-outline"></ion-icon>
+                    {{ questions.question }}
+                </button>
+           
+                <ion-list *ngIf="not_submitted && questions.open"  no-lines  radio-group    [(ngModel)]="questions.poll_id">
+                    <ion-row *ngFor="let option of questions.options "  >
+                        
+                  <ion-col col-4 style="text-align:-webkit-right"  ><ion-radio  (click)="addPollChoice(questions.poll_schedule_id,option.option_id)" value="{{option.option_id}}"></ion-radio>    </ion-col>
+                  <ion-col col-8> {{option.value}}</ion-col>
+                  </ion-row>
+               
+                  </ion-list>
+                </ion-item>
+            </ion-list> 
+    </div>
+
+    <div *ngSwitchCase="'Submitted'" >
+        <ion-list class="accordion-list" >     
+      <ion-item  *ngFor="let questions of submitted; let j = index" no-lines no-padding>
+          
+          
+                <button ion-item  (click)="toggleSectionsumbitted(j)" text-wrap detail-none [ngClass]="{'section-active': questions.open, 'section': !questions.open}">
+                  <ion-icon item-left name="ios-archive-outline"></ion-icon>
+                     {{ questions.question }}
+                </button>
+           
+                <ion-list *ngIf="not_submitted && questions.open"  no-lines  radio-group   [(ngModel)]="questions.poll_id">
+                    <ion-row *ngFor="let option of questions.options"   >
+                    
+                      
+                  <ion-col col-2 style="text-align:-webkit-right"  >
+                    <ion-radio  value="{{option.option_id}} " ></ion-radio>    </ion-col>
+                  <ion-col col-6> {{option.value}}  </ion-col>
+                 <p *ngIf="poll_results[j]?.length>0">
+                  <ion-col col-4 *ngIf="poll_results[j][option.option_id]?.perc>=1" [ngStyle]="{'background-color':poll_results[j][option.option_id]['bg']}">
+                    {{poll_results[j][option.option_id]?.count}}
+                      ({{ poll_results[j][option.option_id]?.perc}}%)
+                        </ion-col>
+                  </p>
+                    </ion-row>
+                   </ion-list>
+                </ion-item>
+            </ion-list> 
+    </div>
+             <!--  <ion-card  *ngSwitchCase="'Submitted'" *ngFor="let polls of pollsquestions.submitted; let i = index" no-lines no-padding>
+          
+          
+                  <button ion-item  (click)="toggleSection(i)" text-wrap detail-none [ngClass]="{'section-active': polls.open, 'section': !polls.open}">
+                    <ion-icon item-left name="md-checkmark-circle" *ngIf="!polls.open"></ion-icon>
+                    <ion-icon item-left name="md-alert" *ngIf="polls.open"></ion-icon>
+                      {{ polls.questions }}
+                  </button>
+             
+                  <ion-list *ngIf="pollsquestions && polls.open"  no-lines >
+                    <ion-item *ngFor="let option of polls.options "   (click)="addPollChoice(polls.poll_schedule_id,option.option_id)">
+                      {{option.value}}
+                      </ion-item>
+                      </ion-list>
+        
+                    
+                </ion-card> -->
+        
+      </div>
+
+
+
+
+   
+     
+
+
+   <!--  
+    <div [ngSwitch]="testing" swipeSegment  [(currentTab)]="category" (tabChanged)="onTabChanged($event)" class="swipe-area">
+ 
+    <ion-list  *ngSwitchCase="'camera'" class="accordion-list">
+        
+        
+        <ion-card  *ngSwitchCase="'Not Submitted'" *ngFor="let polls of pollsquestions; let i = index" no-lines no-padding>
+          
+          
+          <button ion-item  (click)="toggleSection(i)" text-wrap detail-none [ngClass]="{'section-active': polls.open, 'section': !polls.open}">
+            <ion-icon item-left name="md-checkmark-circle" *ngIf="!polls.open"></ion-icon>
+            <ion-icon item-left name="md-alert" *ngIf="polls.open"></ion-icon>
+              {{ polls.questions }}
+          </button>
+     
+          <ion-list *ngIf="pollsquestions && polls.open"  no-lines >
+            <ion-item *ngFor="let option of polls.options "   (click)="addPollChoice(polls.poll_schedule_id,option.option_id)">
+              {{option.value}}
+
+            </ion-item>
+            
+               
+              
+     
+     
+    
+          </ion-list>
+          
+        </ion-card>
+      </ion-list>
+    </div>
+ -->
+
+  
+  
+  
+
+</ion-content>

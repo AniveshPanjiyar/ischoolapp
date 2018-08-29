@@ -1,0 +1,84 @@
+
+
+<!--  <ion-calendar #calendar lang="en" [events]="currentEvents"
+ (onDaySelect)="onDaySelect($event)"
+  (onMonthSelect)="onMonthSelect($event)">
+</ion-calendar> -->
+
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center">Attendace of -- {{displayMonth}}/{{displayYear}} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+ 
+
+ <ion-content>
+
+<ion-grid>
+  <ion-row>
+    <ion-col class="center calendar-header-col" *ngFor="let head of weekHead">{{head}}</ion-col>
+  </ion-row>
+
+  <ion-row class="calendar-row" *ngFor="let week of weekArray;let i = index">
+    <ion-col class="center calendar-col" (click)="daySelect(day,i,j)" *ngFor="let day of week;let j = index" [ngClass]="[day.isThisMonth?'this-month':'not-this-month',day.isToday?'today':'',day.isSelect?'select':'',day.school_open?'school_openDay':'',day.marked?'markedDay':'',day.absent?'absentDay':'']">
+      {{day?.date}} 
+     
+
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+<ion-row>
+  <ion-col style="background: white;">School Closed</ion-col><ion-col style="background: lightblue;" wrap>Attendance not marked</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col style="background: lightgreen">Present</ion-col><ion-col style="background: lightcoral">Absent</ion-col>
+</ion-row>
+
+
+<h3 margin>Absent Reason History</h3>
+
+<ion-item>
+<ion-row style="font-size: 1.4rem ; text-align: center">
+    <ion-col  col-3> Date</ion-col>
+    <ion-col col-6>Reason</ion-col>
+    <ion-col col-1.5 wrap>App</ion-col>
+    <ion-col col-1.5 wrap>All</ion-col>
+  </ion-row>
+  </ion-item>
+  
+  
+
+<ion-list>
+  <ion-item nopadding nomargin *ngFor="let absent of absentism">
+  <ion-row style="font-size: 1.2rem ; text-align: center">
+    <ion-col  col-3>{{absent?.schoolopen_date}}</ion-col>
+    <ion-col col-6>{{absent?.reason}}</ion-col>
+    <ion-col col-1.5 wrap></ion-col>
+    <ion-col col-1.5 wrap></ion-col>
+  </ion-row>
+</ion-item>
+
+</ion-list>
+
+
+
+<div *ngFor="let i of holidays" class="holiday">
+    <span >{{i?.event_eame}} -{{i?.eescription}}
+<img src="{{i.doc_path}}">
+    </span>
+    </div>
+ 
+</ion-content>
+
+
+
+
+

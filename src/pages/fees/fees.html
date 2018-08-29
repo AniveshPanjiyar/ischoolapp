@@ -1,0 +1,133 @@
+<!--
+  Generated template for the FeesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Fees</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  padding>
+
+         <ion-item>
+    
+        <ion-row>
+          <ion-col  col-3>
+              <ion-avatar style="margin: 2px"  item-start>
+                  <img src="{{studentdetail.image_path}}">
+                </ion-avatar>
+          </ion-col>
+          <ion-col no-paddingcol-9>
+              <h4>ID:{{studentdetail.student_id}}</h4>
+              <h2>{{studentdetail.name}}</h2>
+          </ion-col>
+        </ion-row>
+      
+    
+        <ion-row>
+          <ion-col >
+           <ion-icon name="person" style="font-size: 0.7em ">{{studentdetail.date_of_birth}}</ion-icon>
+          </ion-col>
+          <ion-col >
+            Gender:
+          </ion-col>
+          <ion-col >
+              Class:{{studentdetail.class}}
+            </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <h4 padding>Bills Detail:</h4>
+      <ion-card *ngFor="let bills of billdetail " no-padding no-margin class='feecard'>
+        <ion-grid >
+          <ion-row>
+            <ion-col>BILL ID</ion-col>: <ion-col>{{bills.fee_slip_id}}</ion-col>
+            <ion-col>Bill Date</ion-col>:<ion-col>{{bills.bill_date}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Bill Amount</ion-col>:<ion-col>{{bills.amount}}</ion-col>
+            <ion-col>Invoice Balance</ion-col>:<ion-col>{{payment_due[bills.fee_slip_id]}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>Session</ion-col>:<ion-col>{{bills.session}}</ion-col>
+              <ion-col>Class</ion-col>:<ion-col>{{bills.st_class}} / {{bills.section}} / {{bills.stream}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col> Sub Session </ion-col>:<ion-col>{{bills.sub_session}}</ion-col>
+            <ion-col>Download Invoice</ion-col>:<ion-col></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-3> Installment Type </ion-col>:
+            <ion-col col-3>{{bills.inst_name}}</ion-col>
+           
+           <ion-col col-5>
+             <form method="post" action="https://securegw-stage.paytm.in/theia/processTransaction" name="frmTransaction" id="frmTransaction" >
+		            <input name="MID" type="hidden" value="CeonSo44014435746619" />
+                <input name="ORDER_ID" type="hidden" value="{{bills.fee_slip_id}}" />
+                <input name="CUST_ID" type="hidden" value="{{client_id}}" />
+                <input name="TXN_AMOUNT" type="hidden" value="500" />
+                <input name="CHANNEL_ID" type="hidden" value="WAP" />
+                <input name="INDUSTRY_TYPE_ID" type="hidden" value="Retail" />
+                <input name="WEBSITE" type="hidden" value="APPSTAGING" />
+                <input name="CALLBACK_URL" type="hidden" value="{{call_back_url}}" />
+                <input name="CHECKSUMHASH" type="hidden" value="{{checksum}}"/>
+                
+                <button  (click)="paytmfee(bills.fee_slip_id, 500); " class="paybutton" full>Pay</button>
+              </form>
+           
+            </ion-col> 
+          </ion-row>
+        </ion-grid>
+      </ion-card> 
+
+
+      
+
+
+
+      <h4 padding>Payment History:</h4> 
+      <div  *ngFor="let bill_id of bill_ids">
+      <ion-card  class='feecard' >
+          
+          
+         <ion-grid>
+            <ion-row  style="border: 1px solid black;">
+                  <ion-col>BILL ID : {{bill_id}}</ion-col>
+                  <ion-col>Session : {{paymentdetail[bill_id][0].session}}</ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col >Payment Date</ion-col>
+                  <ion-col> Amount</ion-col> 
+                  <ion-col> Payment Mode</ion-col>   
+              </ion-row>
+            
+        
+              <ion-list >
+                <ion-row lines *ngFor="let pay of paymentdetail[bill_id]">
+                   <ion-col >{{pay.paymentdate}}</ion-col>
+                   <ion-col> {{pay.paid_amount}}</ion-col> 
+                   <ion-col> {{pay.payment_mode}}</ion-col>   
+                </ion-row>
+              </ion-list>
+
+          </ion-grid>
+
+      </ion-card>
+    </div>
+
+  
+
+      
+     
+     
+    
+
+
+</ion-content>

@@ -1,0 +1,29 @@
+page-weeklytimetable {
+
+    .ion-grid
+{
+   overflow-x: scroll;
+}
+
+.table
+{
+    display: table;  
+    border: 1px solid black;     
+    
+}
+
+.rows
+{
+   
+    border: 1px solid black;     
+    
+}
+.columns
+{
+     
+    border: 0px solid black;
+    padding: 0%;     
+    
+}
+
+}

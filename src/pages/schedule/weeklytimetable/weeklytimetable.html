@@ -1,0 +1,57 @@
+<!--
+  Generated template for the WeeklytimetablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content padding>
+    
+   
+
+    <ion-scroll scrollX="true" scrollY="true" style="width: 100%; height: 100%" scroll-table >
+      
+      <table class="table" style="overflow-x:auto;" >
+        
+        <ion-row class="rows" >
+          <ion-col col-2   ><ion-item no-lines style="font-size: xx-small">Periods</ion-item></ion-col>
+                <ion-col col-2  class="center calendar-header-col ;flex-flow: column " *ngFor="let period of schedule?.period" wrap style="text-align:center;">
+                  <ion-item no-lines style="font-size: xx-small" >{{period?.period}}<br>{{period?.name}}<br>{{period.time_start }}<br>{{period.time_end }}
+                  </ion-item></ion-col>
+       </ion-row>
+        
+        <ion-row class="rows"   *ngFor="let head of weekHead ; let i=index;" >
+            <ion-col col-2 class="columns" >
+              <ion-item no-lines style="font-size: small"> {{head}}</ion-item></ion-col>
+            
+            <ion-col  col-2 class="columns" *ngFor="let period of schedule?.period" >
+              <ion-row  class="rows" *ngFor="let group of schedule?.tt[i+1][period.period]"  style="flex-flow: column; padding: 0px" >
+               
+                    <span item-left style="font-size: smaller; padding: 0px" >{{group?.subject}}</span>
+                    <span><ion-avatar   align-self-center style="width: 40px;height: 40px;margin: auto;">
+                          <img src="{{group?.teacher_image_path}}" class="imgcenter">
+                    </ion-avatar>
+                        </span>
+                      <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span>
+                  
+              </ion-row>
+            </ion-col>
+           
+          </ion-row>
+        </table>
+
+
+
+      
+    
+    
+      
+      </ion-scroll>
+      
+  
+   
+
+</ion-content>
+

@@ -1,0 +1,61 @@
+<!--
+  Generated template for the NewsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>News <ion-badge item-end>{{count}}</ion-badge>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="padding-right: 0px;  padding-left: 0px;">
+    <ion-spinner class="ion-spinner" center name="ios-small" *ngIf="loader">loading...</ion-spinner>
+
+    <ion-card      *ngFor="let news of newscard"  style=" margin-right: 0px; margin-left: 0px; width: 100%; padding-right: 0px;  padding-left: 0px;"  >
+        <ion-item  (click)="gotodetail(news.news_id)" >
+          <ion-avatar   item-start >     <img src="{{school_logo}}" >       </ion-avatar>
+             <h4>{{news?.dept}}</h4>
+                 <ion-icon  name="clock" item-end ></ion-icon>
+                 <ion-note  item-end ion-right    style=" font-size: 0.9rem; width: 50px;">{{news?.timestamp}} </ion-note>
+          </ion-item>
+             
+             
+             <img class="element" src= "{{news.image_path}}"  >
+         
+         
+         <ion-card-content style="padding-left: 5px;padding-right: 0px; padding-bottom: 5px; padding-top: 5px;" >
+         <h2 class="card-title"><b>{{news?.title}}</b></h2>
+         <p class="card-subtitle">{{news?.desription}}</p>
+     
+         </ion-card-content >
+         
+     
+         <ion-row>
+             <ion-col     style="padding-top: 0px;  padding-bottom: 0px;">
+           
+
+               <button ion-button icon-left clear small  (click)="addEvent(news.news_id);" >
+                 <ion-icon name="thumbs-up"  [ngStyle]="{'color': buttonColor }"></ion-icon>
+                 <div>12 Likes</div>
+               </button>
+             </ion-col>
+             <ion-col  style="    padding-top: 0px;  padding-bottom: 0px;">
+               <button ion-button icon-left clear small style="color: #b4bcca;">
+                 <ion-icon name="share"></ion-icon>
+                 <div>4 Share</div>
+               </button>
+               </ion-col>
+            
+           </ion-row>
+       
+     
+     </ion-card>
+
+</ion-content>

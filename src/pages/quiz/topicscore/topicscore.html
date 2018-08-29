@@ -1,0 +1,55 @@
+<!--
+  Generated template for the TopicscorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title style="font-size: small">Topic wise score in ({{subject}})</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="false">
+  <ion-item>
+    <ion-row style="font-size: small;background-color: dodgerblue">
+      <ion-col col-6>Topic</ion-col>
+      <ion-col col-3>Attempted</ion-col>
+      <ion-col col-3 style="text-align: center"  > Perc %</ion-col>
+     </ion-row>
+  </ion-item>
+   
+  <div>
+      <ion-list   text-wrap text-left   > 
+         <ion-item id="1"  *ngFor="let topic of topics" style=" height: 30px; padding: 0px;margin: 0px">
+          <ion-row style="font-size: smaller; height: 30px; padding: 0px; margin: 0px; vertical-align:middle">
+            <ion-col col-6 > <ion-icon item-left name="book"></ion-icon>{{ topic }}</ion-col>
+            <ion-col col-3 >{{topic_score[topic].total_correct}}/{{topic_score[topic].total_qsn}}</ion-col>
+            <ion-col col-3><ion-badge item-right>
+              {{topic_score[topic].percent_score}}%</ion-badge></ion-col>
+       
+             </ion-row>
+             </ion-item>
+        </ion-list>
+        <ion-list>
+  
+          <ion-item id="2">
+            <ion-row>
+             <ion-col col-4> AVG.</ion-col>
+             <ion-col col-3></ion-col>
+             <ion-col col-3><ion-badge item-right>
+               </ion-badge></ion-col>
+             <ion-col col-1></ion-col>
+             <ion-col col-1></ion-col>
+       
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div>
+        
+     </div>
+  </ion-content>

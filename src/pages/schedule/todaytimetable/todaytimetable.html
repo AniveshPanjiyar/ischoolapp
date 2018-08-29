@@ -1,0 +1,96 @@
+<!--
+  Generated template for the TodaytimetablePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+<ion-content  padding-vertical no-margin>
+
+  <ion-item no-padding no-margin>
+    
+    <ion-row style="font-size: 1.3rem">
+      <ion-col col-4><span class="headspan">Class:</span>{{studentdetails.class}} </ion-col>
+      <ion-col col-4><span class="headspan">Section:</span>{{studentdetails.section}}</ion-col>
+      <ion-col col-4><span class="headspan">Stream:</span>{{studentdetails.stream}}</ion-col>
+    </ion-row>
+    
+  
+      <ion-row> 
+       <ion-icon name="md-calendar" style="font-size:medium;">{{date|date:'fullDate'}}</ion-icon>
+      </ion-row>
+    </ion-item>
+    <ion-item>
+      <ion-label></ion-label>
+      <ion-select [(ngModel)]="day" class="select"  (ionChange)="getSchedule()" >
+        <ion-option value="1">Sunday</ion-option>
+        <ion-option value="2">Monday</ion-option>
+        <ion-option value="3">Tuesday</ion-option>
+        <ion-option  value="4">Wednesday</ion-option>
+        <ion-option  value="5">Thursday</ion-option>
+        <ion-option  value="6">Friday</ion-option>
+        <ion-option  value="7">Saturday</ion-option>
+      </ion-select>
+    </ion-item>
+
+      <ion-row text-center style="font-size:x-small;background: gray; ">
+        <ion-col col-2 padding-vertical>Period</ion-col>
+        <ion-col text-center  no-padding no-margin>
+         <ion-row text-center  no-padding no-margin >
+        <ion-col col-2  padding-vertical>Time</ion-col>
+        <ion-col col-5  padding-vertical>Subject</ion-col>
+        <ion-col col-2.75   padding-vertical>Teacher</ion-col>
+        <ion-col col-2.75  padding-vertical>Proxy</ion-col>
+      </ion-row></ion-col></ion-row>
+      
+
+      <ion-list no-padding no-margin>
+        <ion-item no-padding no-margin *ngFor="let period of schedule?.period">
+          <ion-grid no-padding no-margin>
+           <ion-row no-padding no-margin >
+               <ion-col col-2 text-center wrap  no-padding no-margin  text-modifier>
+                {{period?.period}}<br>
+               <span *ngIf="period?.period_name" style="font-size: 0.5em"> {{period?.period_name}}</span> 
+            </ion-col>
+
+ 
+
+          <ion-col  col-10 no-padding no-margin text-center >
+            <span text-center no-padding no-margin *ngIf="checkarray(period.period)">
+            <ion-row text-center  *ngFor="let group of daytimetable[period.period]" >
+              <ion-col col-2 text-center wrap style="font-size: 0.7em">
+                    {{period.time_start}}<br> {{period.time_end}}
+              </ion-col>
+              <ion-col wrap col-5 text-center >
+                  {{group?.subject}}
+                  <span *ngIf="group.sub_subject"><br>{{group.sub_subject}}</span>
+                  <span *ngIf="group.for_group" style="font-size: x-small"><br>{{group.for_group}}</span>
+              </ion-col>
+              
+              <ion-col col-2.75 no-padding text-center c	 >
+                  <ion-avatar  no-margin no-padding align-self-center style="width: 40px;height: 40px;margin: auto;">
+                      <img src="{{group?.teacher_image_path}}" class="imgcenter"><br>
+                  </ion-avatar>
+                  <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span>
+              </ion-col>
+              <ion-col col-2.75 no-padding text-center	 >
+                  <ion-avatar no-margin no-padding  align-self-center style="width: 40px;height: 40px;margin: auto;">
+                      <img src="{{group?.teacher_image_path}}" class="imgcenter">
+                  </ion-avatar>
+                  <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span>
+              </ion-col>
+            </ion-row>
+          </span>
+          </ion-col>
+         
+        </ion-row>
+      </ion-grid>
+        </ion-item>
+      </ion-list>
+
+
+   
+
+</ion-content>

@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-navbar >
+      <ion-title> Profile </ion-title>
+  </ion-navbar>
+
+  <shrinking-segment-header [scrollArea]="myContent" headerHeight="150">
+      <img src="{{studentDetails.image_path}}" />
+      <h2>{{studentDetails.name}}</h2>
+  </shrinking-segment-header>
+
+  <ion-toolbar color="light" mode="md">
+    <ion-segment color="dark" mode="md" [(ngModel)]="section">
+      <ion-segment-button  value="one">Basic       </ion-segment-button>
+      <ion-segment-button  value="two">  Contacts  </ion-segment-button>
+      <ion-segment-button  value="three"> Interests</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content fullscreen #myContent>
+
+  <div [ngSwitch]="section"   (tabChanged)="onTabChanged($event)" class="swipe-area" >
+
+    <div *ngSwitchCase="'one'" padding>
+      
+        <ion-row>
+            <ion-col class="textcolor"> Name: </ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.name}} </ion-col>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col class="textcolor"> DOB: </ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.date_of_birth}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> Class:</ion-col>
+            <ion-col ion-text color="secondary"> {{studentDetails.class}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> STREAM: </ion-col>
+            <ion-col ion-text color="secondary"> {{studentDetails.stream}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> SECTION: </ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.section}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> Email:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.email_id}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> PREVIOUS SCHOOL NAME: </ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.previous_school}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> ADMISSION SESSION: </ion-col>
+            <ion-col ion-text color="secondary"> {{studentDetails.admission_session}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> SESSION EXPIRY DATE:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.expiry_date}}</ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor">  BLOOD GROUP:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.blood_group}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor">  GENDER: </ion-col>
+            <ion-col ion-text color="secondary"> {{studentDetails.gender}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+            <ion-col class="textcolor"> PREFERREDLANG./MOTHER TONGUE:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.mother_tongue}} </ion-col>
+          </ion-row>
+        </div>
+
+    <div *ngSwitchCase="'two'" padding>
+        <ion-row>
+            <ion-col  class="textcolor">ADDRESS:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.address_locality}}-{{studentDetails.address_city}}</ion-col>
+          </ion-row>
+       
+          <ion-row>
+           <ion-col  class="textcolor">  STUDENT CONTACT NMBR: </ion-col>
+              <ion-col ion-text color="secondary"> {{studentDetails.telephone_student}} </ion-col>
+          </ion-row>
+        
+          <ion-row>
+           <ion-col  class="textcolor">  FATHER CONTACT NUMBER </ion-col>
+            <ion-col ion-text color="secondary"> {{studentDetails.telephone_father}}</ion-col>
+          </ion-row>
+              
+          <ion-row>
+             <ion-col  class="textcolor">  MOTHER CONTACT NMBR:</ion-col>
+             <ion-col ion-text color="secondary">{{studentDetails.telephone_mother}}</ion-col>
+          </ion-row>
+            
+          <ion-row>
+            <ion-col class="textcolor">  HOME CONTACT:</ion-col>
+            <ion-col ion-text color="secondary">{{studentDetails.telephone_home}} </ion-col>
+          </ion-row>
+        </div>
+
+    <ion-list *ngSwitchCase="'three'">
+     
+      <!-- content for interests and hobbies -->
+    </ion-list>
+
+  </div>
+
+</ion-content>

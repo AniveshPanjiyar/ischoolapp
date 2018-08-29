@@ -1,0 +1,62 @@
+<!--
+  Generated template for the SyllabusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Subjects I Teach</ion-title>
+  </ion-navbar>
+  <ion-item item-center> 
+  <ion-row>
+    <ion-col col-6 style="text-align: left" >Class</ion-col>
+    <ion-col col-3  style="text-align: left">Subjects</ion-col> 
+    <ion-col col-2 style="text-align: left" >Periods</ion-col>
+    <ion-col col-1 style="text-align: right">Topics+</ion-col>
+  </ion-row>
+  </ion-item>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <ion-list class="accordion-list" >     
+        <ion-item  *ngFor="let subject of Subjects; let i = index"  no-padding>
+            
+                  <button  no-lines ion-item   (click)="toggleSelection(i,subject.subject)" text-wrap detail-none [ngClass]="{'section-active': subject.open, 'section': !subject.open}">
+                    <ion-row no-padding >
+                        <ion-col  col-6  style="text-align: left; padding: 0px" >
+                            {{ subject.class }} - {{ subject.section }} - {{ subject.stream }}
+                        </ion-col>
+                      <ion-col col-3  style="text-align: center">
+                        <ion-icon item-left name="book"></ion-icon>
+                        {{ subject.subject }} </ion-col> 
+                     
+                      <ion-col  col-2 style="text-align: right" > 
+                         <ion-badge item-right>{{subject.period_week}}</ion-badge></ion-col>
+                      <ion-col  col-1 style="text-align: right" >
+                        <ion-icon item-left name="ios-arrow-down"></ion-icon></ion-col>
+                    </ion-row>
+                    </button>
+
+                  <ion-list *ngIf="subject_open == subject.subject" no-padding    >
+                    <ion-item   *ngFor="let topic of Topics ; let j=index"  no-padding >
+                      <button  ion-item   (click)="toggleSelected(j)"   text-wrap   [ngClass]="{'section-active': topic.open, 'section': !topic.open}">
+                        <ion-col col-6>  {{topic.topic_id}} . {{topic.topic}} </ion-col>
+                        <ion-col col-6> {{topic.topic_description}}</ion-col>
+                      </button>
+                    </ion-item>
+                  </ion-list> 
+              </ion-item>
+              </ion-list>
+
+
+
+</ion-content>

@@ -1,0 +1,32 @@
+
+<ion-content padding class="welcome">
+  <img src="" class="logo"/>
+  
+    <div style="text-align: center; margin-bottom: 100px;color: gray" >
+        <img  src="assets/imgs/company_logo/i-school_logo.jpg"><br>
+        Intelligent ERP APP for your School
+
+      </div> 
+   
+     <div style="text-align: center; border: 2px solid gray; margin-bottom:100px">
+      <form  >
+        <ion-item>
+          <ion-label floating> Client Code    </ion-label>
+          <ion-input type="text"  name="Client" [(ngModel)]="client_id" ></ion-input>
+        </ion-item>
+        </form>
+      
+        <button class="submitbutton" ion-button full color="dark" (click)="checkClient(client_id)">Check Client/School code </button>
+      
+
+      </div>
+    
+ 
+        <div style="text-align: center;    margin-top: 130px;" >
+          Powered by<br>
+          <img  src="assets/imgs/company_logo/alive-net-solution-logo.png">
+         
+  
+        </div> 
+     
+</ion-content>
