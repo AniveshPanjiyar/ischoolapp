@@ -10,6 +10,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite } from '@ionic-native/sqlite';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CacheModule} from 'ionic-cache'
+
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -70,7 +71,7 @@ import {HealthstatusPageModule} from '../pages/healthstatus/healthstatus.module'
     AttendancePageModule, 
     ProgressreportPageModule,
     HttpClientModule,
-    CacheModule.forRoot(),
+    CacheModule.forRoot({ keyPrefix: 'my-app-cache' }),
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),

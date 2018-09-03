@@ -9,16 +9,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>News <ion-badge item-end>{{count}}</ion-badge>
+    <ion-title>News <ion-badge item-end></ion-badge>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content style="padding-right: 0px;  padding-left: 0px;">
+  <ion-refresher (ionRefresh)="forceReload($event)">
+    <ion-refresher-content refreshingText="Reload from API...">
+    </ion-refresher-content>
+  </ion-refresher>
+
     <ion-spinner class="ion-spinner" center name="ios-small" *ngIf="loader">loading...</ion-spinner>
 
-    <ion-card      *ngFor="let news of newscard"  style=" margin-right: 0px; margin-left: 0px; width: 100%; padding-right: 0px;  padding-left: 0px;"  >
+    <ion-card      *ngFor="let news of newscard | async"  style=" margin-right: 0px; margin-left: 0px; width: 100%; padding-right: 0px;  padding-left: 0px;"  >
         <ion-item  (click)="gotodetail(news.news_id)" >
           <ion-avatar   item-start >     <img src="{{school_logo}}" >       </ion-avatar>
              <h4>{{news?.dept}}</h4>

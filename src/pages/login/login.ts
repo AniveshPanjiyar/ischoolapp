@@ -5,11 +5,15 @@ import { HomePage } from '../home/home';
 import { Http } from '@angular/http';
 
 import { Events } from 'ionic-angular';
+import {_throw} from 'rxjs/observable/throw';
 
+
+import { catchError, retry } from 'rxjs/operators';
 
 import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/catch'; 
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -46,18 +50,15 @@ constructor(public navCtrl: NavController, public navParams: NavParams ,public h
     if(loginData.email && loginData.password){
     this.http.post(localStorage.urlpath +'Login', {
       "login_id":loginData.email,"password": loginData.password,"client": localStorage.client_id
-       }).map(res  => {
-        //console.log('GET RESPONSE  =>', res);
-        //console.log('GET RESPONSE headers => ', res.headers);
-        // If everything went fine, return the response
-        if(res.status >= 200 || res.status <300) {
-          console.log('GET IN SUCCESS RESPONSE ==> ');
-          return res.json();
-        }
-      })
+       }).map(res  => res.json()).pipe(
+        retry(3),
+        catchError(this.handleError)
+      )
+    
        .subscribe(data => {
       
         this.posts = data;
+        console.log('success'+data);
 
       
         if(this.posts.status=="success")
@@ -109,12 +110,8 @@ constructor(public navCtrl: NavController, public navParams: NavParams ,public h
         
     },
     error => {
-      if(error.status=="0"){
-        this.error ="No internet Connection"
-      }
-
-      else{this.error="Client not found"}
-      console.log(error.status);
+     
+      console.log('Error occured' +error);
       this.toastoption={
         message:this.error,
         duration: 3000
@@ -148,5 +145,22 @@ constructor(public navCtrl: NavController, public navParams: NavParams ,public h
     // enable the root left menu when leaving this page
     this.menu.enable(true);
   }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error}`);
+     }
+
+   // return an observable with a user-facing error message
+    return _throw(
+      'Something bad happened; please try again later.');
+  };
 
 }

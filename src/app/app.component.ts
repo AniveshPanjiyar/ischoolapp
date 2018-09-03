@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 import { Calendar} from '../pages/calendar/calendar';
+import { CacheService } from 'ionic-cache';
 //import {CacheService} from 'ionic-cache'
 
 
@@ -20,12 +21,18 @@ export class MyApp {
    pages: Array<{icons:String ,title: string, component: any}>;
 
   
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events,private  loadingCtrl: LoadingController)
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events,private  loadingCtrl: LoadingController,public cache: CacheService)
    {
-      platform.ready().then(()=>{
-       // cache.setDefaultTTL(60*60*12);
-       // cache.setOfflineInvalidate(false);
-      })
+    platform.ready().then(() => {
+      // Set TTL to 12h
+      cache.setDefaultTTL(60 * 60 * 12);
+ 
+      // Keep our cached results when device is offline!
+      cache.setOfflineInvalidate(false);
+ 
+      statusBar.styleDefault();
+      splashScreen.hide();
+    });
 
     if(localStorage.module_active)
     {  if(localStorage.type=='Student')
@@ -148,7 +155,8 @@ this.nav.push('ProfilePage');
 //logout
 logout(){
   localStorage.loginStaus="";
-  localStorage.clear();
+  this.cache.clearAll();
+ localStorage.clear();
   
   setTimeout(() => {
     let loading = this.loadingCtrl.create({content: 'Please wait...'});

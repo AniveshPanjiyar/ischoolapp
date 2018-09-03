@@ -26,7 +26,7 @@ export class NewsService {
    this.studentdetail=JSON.parse(localStorage.getItem('studentdetail'));
   }
 
-  getNews(){
+  getNews(refresher?){
       return  this.http.post<News>(localStorage.urlpath+'listNews' ,{ "session": localStorage.session,"client": localStorage.client_id
     }).pipe(
       retry(3),
