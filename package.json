@@ -29,7 +29,7 @@
     "@ionic-native/sqlite-porter": "^4.11.0",
     "@ionic-native/status-bar": "4.7.0",
     "@ionic/storage": "^2.1.3",
-    "cordova-android": "^7.1.1",
+    "cordova-android": "7.0.0",
     "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
@@ -37,7 +37,6 @@
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sqlite-storage": "^2.3.3",
-    "ionic": "^4.0.6",
     "ionic-angular": "3.9.2",
     "ionic-cache": "^3.1.2",
     "ionic2-super-tabs": "^4.3.0",
@@ -51,7 +50,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.9",
+    "@ionic/app-scripts": "3.2.0",
     "@ionic/cli-plugin-cordova": "1.6.2",
     "@ionic/cli-plugin-ionic-angular": "1.4.1",
     "typescript": "~2.6.2"

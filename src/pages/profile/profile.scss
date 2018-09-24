@@ -5,7 +5,19 @@ page-profile {
        height:100%;
        width:50%;
       margin-left: 2cm;
+}
+
+    .value{
+    color: gray;
+    font-size:smaller; 
+   word-break: break-all;
+        }
+
+    .key{
+        font-size:small;
     }
+
+  
     shrinking-segment-header {
  
         background-color: #363636;

@@ -14,3 +14,20 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+shrinking-segment-header {
+ 
+    background-color: #363636;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        border-radius: 50%;
+        width: 75px;
+        height: auto;
+        margin-right: 15px;
+    }
+
+}

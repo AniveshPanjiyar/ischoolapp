@@ -12,3 +12,5 @@ export class Circulars  {
         Object.assign(this, input);
         return this;
 }}
+
+//Test to push on github

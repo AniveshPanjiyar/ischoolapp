@@ -21,6 +21,7 @@ export class BatchmatesPage {
   search_class=localStorage.class;
   search_section=localStorage.section;
   search_stream=localStorage.stream;
+  loading = this.loadingCtrl.create({content: 'Please wait...'});
 
 
 
@@ -32,13 +33,16 @@ export class BatchmatesPage {
 //to get list of classmates
   getbatchmatesdetail(){
 
-    let loading = this.loadingCtrl.create({content: 'Please wait...'});
-    loading.present();
+   
+    this.loading.present();
       this.batchmatesserviceProvider.getbatchmatesdetail().subscribe(data=> 
         {this.classmates=data},
-      error=>{},
-        ()=>loading.dismiss()
-      );
+      error=>{
+        this.loading.dismiss();
+      },
+        ()=>{
+          this.loading.dismiss()
+      });
       console.log(this.classmates)
 
   }
@@ -53,6 +57,10 @@ export class BatchmatesPage {
   //on view load
   ionViewDidLoad() {
     console.log('ionViewDidLoad BatchmatesPage');
+  }
+
+  ionViewWillLeave(){
+    this.loading.dismiss();
   }
 
 }

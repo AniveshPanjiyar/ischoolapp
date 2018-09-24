@@ -15,9 +15,16 @@
 
 <ion-content class="card-background-page" padding>
     <ion-card  *ngFor="let albums of albumlist" (click)="openalbumimages(albums.album_id,albums.albums_name)" >
+        <ion-item>
+          <ion-row>
+          <ion-col><b>{{albums.album_name}}</b></ion-col>
+        <ion-col> *{{albums.image_count}} Images</ion-col>
+      </ion-row>
+    
+          <ion-row> <ion-col>
         <img src="{{albums.album_image}}"/>
-        <h1 class="card-title">{{albums.album_name}}</h1>
-        <div class="card-subtitle">{{albums.image_count}} Images</div>
+      </ion-col>   </ion-row>
+      </ion-item>
       </ion-card>
 
 </ion-content>

@@ -10,6 +10,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite } from '@ionic-native/sqlite';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CacheModule} from 'ionic-cache'
+
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -38,6 +39,7 @@ import {ProgressreportPageModule} from '../pages/progressreport/progressreport.m
 
 import {FeesPageModule} from '../pages/fees/fees.module'
 import {HealthstatusPageModule} from '../pages/healthstatus/healthstatus.module'
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -70,7 +72,8 @@ import {HealthstatusPageModule} from '../pages/healthstatus/healthstatus.module'
     AttendancePageModule, 
     ProgressreportPageModule,
     HttpClientModule,
-    CacheModule.forRoot(),
+    ComponentsModule,
+    CacheModule.forRoot({ keyPrefix: 'my-app-cache' }),
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
