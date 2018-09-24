@@ -16,18 +16,19 @@
   </ion-navbar>
   <expandable-header [scrollArea]="mycontent" headerHeight="125">
       <ion-item>
+          <label><ion-icon name="filter"></ion-icon>filter</label>
           <ion-select [(ngModel)]="subject_selected" class="select"  (ionChange)="getsubjectHomework()" >
               <ion-option *ngFor="let sub of subjects"  value="{{sub.subject}}">{{sub.subject}}</ion-option>
               
             </ion-select>
       </ion-item>
 
-      <ion-item>
+     <!--  <ion-item>
           <ion-select [(ngModel)]="day" class="select"  (ionChange)="getSchedule()" >
               <ion-option value="1">monday</ion-option>
              
             </ion-select>
-      </ion-item>
+      </ion-item> -->
   </expandable-header>
   
 </ion-header>

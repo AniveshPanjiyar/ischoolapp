@@ -12,9 +12,9 @@
   <ion-item no-padding no-margin>
     
     <ion-row style="font-size: 1.3rem">
-      <ion-col col-4><span class="headspan">Class:</span>{{studentdetails.class}} </ion-col>
-      <ion-col col-4><span class="headspan">Section:</span>{{studentdetails.section}}</ion-col>
-      <ion-col col-4><span class="headspan">Stream:</span>{{studentdetails.stream}}</ion-col>
+      <ion-col ><span class="headspan">Class:</span>{{studentdetails.class}} </ion-col>
+      <ion-col ><span class="headspan">Section:</span>{{studentdetails.section}}</ion-col>
+      <ion-col ><span class="headspan">Stream:</span>{{studentdetails.stream}}</ion-col>
     </ion-row>
     
   
@@ -23,7 +23,7 @@
       </ion-row>
     </ion-item>
     <ion-item>
-      <ion-label></ion-label>
+      <ion-label>Select Day</ion-label>
       <ion-select [(ngModel)]="day" class="select"  (ionChange)="getSchedule()" >
         <ion-option value="1">Sunday</ion-option>
         <ion-option value="2">Monday</ion-option>
@@ -69,17 +69,17 @@
                   <span *ngIf="group.for_group" style="font-size: x-small"><br>{{group.for_group}}</span>
               </ion-col>
               
-              <ion-col col-2.75 no-padding text-center c	 >
+              <ion-col col-2.75 no-padding text-center wrap	style="width: 45px;" >
                   <ion-avatar  no-margin no-padding align-self-center style="width: 40px;height: 40px;margin: auto;">
                       <img src="{{group?.teacher_image_path}}" class="imgcenter"><br>
                   </ion-avatar>
                   <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span>
               </ion-col>
               <ion-col col-2.75 no-padding text-center	 >
-                  <ion-avatar no-margin no-padding  align-self-center style="width: 40px;height: 40px;margin: auto;">
+                  <!-- <ion-avatar no-margin no-padding  align-self-center style="width: 40px;height: 40px;margin: auto;">
                       <img src="{{group?.teacher_image_path}}" class="imgcenter">
                   </ion-avatar>
-                  <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span>
+                  <span text-wrap style="font-size: xx-small">{{group.teacher_name}}</span> -->
               </ion-col>
             </ion-row>
           </span>

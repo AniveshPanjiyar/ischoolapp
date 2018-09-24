@@ -1,20 +1,26 @@
-<ion-menu id='myMenu' [content]="content" >
+<ion-menu id='myMenu' [content]="content">
     <ion-header>
         <ion-toolbar style="align-self:center;" >
             <ion-title>Menu</ion-title>
            </ion-toolbar>
-           <ion-row>
+            <ion-row>
            <ion-col col-4><ion-avatar     style="    width: 100px; align-self: center;" menuClose  (click)="openprofile()">
             <img src="{{studentdetail?.image_path}}">            
            
            </ion-avatar> 
            </ion-col>
            <ion-col col-8 style="vertical-align: bottom" menuClose (click)="openprofile()">My Profile</ion-col>
-        </ion-row>
-         </ion-header>
+        </ion-row> 
 
-  <ion-content>
-    <ion-list>
+        <!-- <shrinking-segment-header [scrollArea]="mycontent" headerHeight="150" menuClose  (click)="openprofile()" >
+                <img src="{{studentdetail?.image_path}}" />
+                <h2>{{studentdetail?.name}}</h2>
+        </shrinking-segment-header> -->
+    </ion-header>
+
+  
+    <ion-content  >
+    <ion-list  >
      
       <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
           <ion-icon  [name]="page.icons"> {{page.title}}</ion-icon> 

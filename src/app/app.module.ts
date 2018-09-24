@@ -39,6 +39,7 @@ import {ProgressreportPageModule} from '../pages/progressreport/progressreport.m
 
 import {FeesPageModule} from '../pages/fees/fees.module'
 import {HealthstatusPageModule} from '../pages/healthstatus/healthstatus.module'
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -71,6 +72,7 @@ import {HealthstatusPageModule} from '../pages/healthstatus/healthstatus.module'
     AttendancePageModule, 
     ProgressreportPageModule,
     HttpClientModule,
+    ComponentsModule,
     CacheModule.forRoot({ keyPrefix: 'my-app-cache' }),
 
     IonicStorageModule.forRoot(),
